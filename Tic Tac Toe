@@ -1,0 +1,160 @@
+//icons for the game
+var icons = ["icon://fa-times", "icon://fa-circle-o"];
+//keep track of the score
+var playerOneScore = 0;
+var playerTwoScore = 0;
+
+var winner = decideWinner("playerOne", "playerTwo");
+
+var turn = ["playerOne", "playerTwo"];
+
+onEvent("startButton", "click", function( ) {
+  turn = "playerOne";
+});
+
+
+onEvent("box1", "click", function( ) {
+  var turn = "";
+  if (turn == "playerOne") {
+    icons = icons[1];
+    turn = "playerTwo";
+    setProperty("box1", "image", icons[0]);
+  } else if (turn == "playerTwo") {
+    icons = icons[0];
+    turn = "playerOne";
+    setProperty("box1", "image", icons[1]);
+  }
+  return turn;
+});
+onEvent("box2", "click", function( ) {
+  if (icons == icons[0]) {
+    icons = icons[1];
+    setProperty("box2", "image", icons[0]);
+  } else if (icons == icons[1]) {
+    icons = icons[0];
+    setProperty("box2", "image", icons[1]);
+  }
+});
+onEvent("box3", "click", function( ) {
+  if (icons == icons[0]) {
+    icons = icons[1];
+    setProperty("box3", "image", icons[0]);
+  } else if (icons == icons[1]) {
+    icons = icons[0];
+    setProperty("box3", "image", icons[1]);
+  }
+});
+onEvent("box4", "click", function( ) {
+  if (icons == icons[0]) {
+    icons = icons[1];
+    setProperty("box4", "image", icons[0]);
+  } else if (icons == icons[1]) {
+    icons = icons[0];
+    setProperty("box4", "image", icons[1]);
+  }
+});
+onEvent("box5", "click", function( ) {
+  if (icons == icons[0]) {
+    icons = icons[1];
+    setProperty("box5", "image", icons[0]);
+  } else if (icons == icons[1]) {
+    icons = icons[0];
+    setProperty("box5", "image", icons[1]);
+  }
+});
+onEvent("box6", "click", function( ) {
+  if (icons == icons[0]) {
+    icons = icons[1];
+    setProperty("box6", "image", icons[0]);
+  } else if (icons == icons[1]) {
+    icons = icons[0];
+    setProperty("box6", "image", icons[1]);
+  }
+});
+onEvent("box7", "click", function( ) {
+  if (icons == icons[0]) {
+    icons = icons[1];
+    setProperty("box7", "image", icons[0]);
+  } else if (icons == icons[1]) {
+    icons = icons[0];
+    setProperty("box7", "image", icons[1]);
+  }
+});
+onEvent("box8", "click", function( ) {
+  if (icons == icons[0]) {
+    icons = icons[1];
+    setProperty("box8", "image", icons[0]);
+  } else if (icons == icons[1]) {
+    icons = icons[0];
+    setProperty("box8", "image", icons[1]);
+  }
+});
+onEvent("box9", "click", function( ) {
+  if (icons == icons[0]) {
+    icons = icons[1];
+    setProperty("box9", "image", icons[0]);
+  } else if (icons == icons[1]) {
+    icons = icons[0];
+    setProperty("box9", "image", icons[1]);
+  }
+});
+
+if(winner == "Draw"){
+    setProperty("winner","text","Draw!");
+  } else if (winner == "playerOne") {
+    setProperty("winner","text","Player One Wins!");
+    playerOneScore++;
+    setProperty("playerOneOutput","text",playerOneScore);
+  } else if (winner == "playerTwo") {
+    setProperty("gameText","text","Player Two Wins");
+    playerTwoScore++;
+    setProperty("playerTwoOutput","text",playerTwoScore);    
+  }
+
+
+function decideWinner(playerOne, playerTwo) {
+  var winner = "";
+  for (var i = 0; i < 8; i++) {
+    if (icons == icons[0]) {
+      if ("box1", "box2", "box3" == icons[0]) {
+        winner = "playerOne";
+      } else if ("box4", "box5", "box6" == icons[0]) {
+        winner = "playerOne";
+      } else if ("box7", "box8", "box9" == icons[0]) {
+        winner = "playerOne";
+      } else if ("box1", "box4", "box7" == icons[0]) {
+        winner = "playerOne";
+      } else if ("box2", "box5", "box8" == icons[0]) {
+        winner = "playerOne";
+      } else if ("box3", "box6", "box9" == icons[0]) {
+        winner = "playerOne";
+      } else if ("box1", "box5", "box9" == icons[0]) {
+        winner = "playerOne";
+      } else if ("box3", "box5", "box7" == icons[0]) {
+        winner = "playerOne";
+      } 
+    } else if (icons == icons[1]) {
+      if ("box1", "box2", "box3" == icons[1]) {
+        winner = "playerTwo";
+      } else if ("box4", "box5", "box6" == icons[1]) {
+        winner = "playerTwo";
+      } else if ("box7", "box8", "box9" == icons[1]) {
+        winner = "playerTwo";
+      } else if ("box1", "box4", "box7" == icons[1]) {
+        winner = "playerTwo";
+      } else if ("box2", "box5", "box8" == icons[1]) {
+        winner = "playerTwo";
+      } else if ("box3", "box6", "box9" == icons[1]) {
+        winner = "playerTwo";
+      } else if ("box1", "box5", "box9" == icons[1]) {
+        winner = "playerTwo";
+      } else if ("box3", "box5", "box7" == icons[1]) {
+        winner = "playerTwo";
+      }  
+      
+    } else {
+      winner = "draw";
+    }
+  }
+    return winner;
+}
